@@ -6,13 +6,6 @@ import threading
 import rpcz
 from graspit_services import *
 
-SERVER_ADDRESS = "tcp://*:5561"
-
-SERVICES = [RecognitionService, 
-					  CameraOriginService,
-					  CheckGraspReachabilityService,
-					  ExecuteGraspService]
-
 
 class RPCZAppManager():
 	def __init__(self,server_address,services):
@@ -44,15 +37,26 @@ class ServerThread(threading.Thread):
 		self.app.run()
 
 
+#this shows how to run the server
+#without any connection to the ros code
+def example_run():
+	SERVER_ADDRESS = "tcp://*:5561"
 
+	SERVICES = [RecognitionService, 
+					  CameraOriginService,
+					  CheckGraspReachabilityService,
+					  ExecuteGraspService]
 
-rpczAppManager = RPCZAppManager(SERVER_ADDRESS,SERVICES)
-rpczAppManager.start()
+	rpczAppManager = RPCZAppManager(SERVER_ADDRESS,SERVICES)
+	rpczAppManager.start()
 
-while True:
-	try:
-		time.sleep(1)
-	except (KeyboardInterrupt, SystemExit):
-		break
+	while True:
+		try:
+			time.sleep(1)
+		except (KeyboardInterrupt, SystemExit):
+			break
 
-rpczAppManager.shutdown()
+	rpczAppManager.shutdown()
+
+if __name__ == "__main__":
+	example_run()
