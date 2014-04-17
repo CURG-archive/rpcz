@@ -3,7 +3,7 @@ package graspit_rpcz;
 import "geometry_msgs.proto";
 
 message CheckGraspReachabilityRequest {
-	required Pose final_hand_pose = 1;
+	required GraspMsg grasp = 1;
 }
 
 message CheckGraspReachabilityResponse {
