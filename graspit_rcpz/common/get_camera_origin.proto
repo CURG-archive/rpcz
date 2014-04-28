@@ -11,5 +11,5 @@ message CameraOriginResponse
 
 service CameraOriginService
 {
-	rpc GetCameraOrigin(CameraOriginRequest) returns (CameraOriginResponse);
+	rpc run(CameraOriginRequest) returns (CameraOriginResponse);
 }
