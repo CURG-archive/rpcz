@@ -3,5 +3,6 @@ import "geometry_msgs.proto";
 
 message GraspableObject {
 	required string name = 1;
-	required Pose pose = 2;
+	required string model = 2;
+	required Pose pose = 3;
 }
