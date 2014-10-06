@@ -1,0 +1,7 @@
+message CompressedImage
+{
+optional string format = 1;        // Specifies the format of the data
+                               //   Acceptable values:
+                               //     jpeg, png
+required bytes data = 2;           //  Compressed image buffer
+}

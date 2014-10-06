@@ -1,0 +1,42 @@
+package graspit_rpcz;
+
+//image proto definition copied from gazebo
+
+// \ingroup graspit_rpcz
+/// \interface Image
+/// \brief Message for an image
+
+
+message Image
+{
+    enum PixelFormat
+    {
+        UNKNOWN_PIXEL_FORMAT = 0;
+    	L_INT8 = 1;
+	L_INT16 = 2;	
+    	RGB_INT8 = 3;	
+    	RGBA_INT8 = 4;	
+	BGRA_INT8 = 5;	
+	RGB_INT16 = 6;	
+	RGB_INT32 = 7;	
+	BGR_INT8 = 8;	
+	BGR_INT16 = 9;	
+	BGR_INT32 = 10;	
+	R_FLOAT16 = 11;	
+	RGB_FLOAT16 = 12;	
+	R_FLOAT32 = 13;
+	RGB_FLOAT32 = 14;	
+	BAYER_RGGB8 = 15;
+	BAYER_RGGR8 = 16;
+	BAYER_GBRG8 = 17;
+	BAYER_GRBG8 = 18;
+	PIXEL_FORMAT_COUNT = 19;
+    }
+
+  required uint32 width         = 1; // Image width (number of columns)
+  required uint32 height        = 2; // Image height (number of rows)
+  required PixelFormat pixel_format  = 3; // Corresponds to Image::PixelFormat enum
+  required uint32 step          = 4; // Full row length in bytes
+  // repeated uint32 data          = 5; // Actual data, size if (step * rows)
+  required bytes data          = 5; // Actual data, size if (step * rows)
+}

@@ -1,0 +1,67 @@
+package graspit_rpcz;
+
+import "image.proto";
+import "compressed_image.proto";
+
+message GetOptionSelectionRequest
+{
+ 
+   message OptionDescription
+   {
+	// A verbose description of what the option signifies
+	optional string description = 1;      
+
+	// A float indicating the relative cost of this choice. This number 
+	// should positively correlate with how important it is that 
+	// false positives of this choice be avoided.
+	required float cost = 2 [default = 0]; 
+   }
+   message ImageOption
+    {
+	required Image option = 1; // The image representing the choice
+	required OptionDescription description = 2; // A description of the option and it's importance. 
+    }
+
+    
+    message CompressedImageOption
+    {
+	required Image option = 1; // The image representing the choice
+	required OptionDescription description = 2; // A description of the option and it's importance.     
+    }
+	
+    message StringOption // A message describing a choice as a string
+    {
+	required string option = 1; // The string succinctly describing the choice
+        required OptionDescription description  = 2; // A description of the option and it's importance. 
+    }
+
+    
+    // Array of choices represented by images
+    repeated Image imageOptions = 1; 
+
+    // Array of choices represented by strings
+    repeated string stringOptions = 2; 
+
+    // A float that describes how critical the 
+    // decision represented by the choice is. 
+    // Higher minimum confidence levels implicitly 
+    // request that the responder be more careful 	   
+    // in presenting the option. 
+    required float minimumConfidenceLevel = 3 [default = 0];     	     	   			      							 
+}
+
+message GetOptionSelectionResponse 
+{
+   // The option selected;
+   required int selectedOption = 1;
+
+   // The confidence of the classifier of the selection. 
+   required float confidence = 2;
+
+   // An array representing how positively all of the options were ranked. 
+   repeated float interestLevel = 3;
+}
+
+service ObjectRecognitionService {
+  rpc run(ObjectRecognitionRequest) returns(ObjectRecognitionResponse);
+}
