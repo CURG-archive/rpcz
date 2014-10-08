@@ -8,9 +8,6 @@ message GetOptionSelectionRequest
  
     message OptionDescription
     {
-        // A unique id for the option
-        optional int32 id = 0;
-
         // A verbose description of what the option signifies
         optional string description = 1;      
 
@@ -18,6 +15,9 @@ message GetOptionSelectionRequest
         // should positively correlate with how important it is that 
         // false positives of this choice be avoided.
         required float cost = 2 [default = 0]; 
+
+        // A unique id for the option
+        optional int32 id = 3;
     }
     message ImageOption
     {
@@ -59,7 +59,7 @@ message GetOptionSelectionRequest
 message GetOptionSelectionResponse 
 {
     // The option id that is selected
-    optional int selectedOption = 1;
+    optional int32 selectedOption = 1;
 
     // The confidence of the classifier of the selection. 
     required float confidence = 2;

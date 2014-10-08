@@ -32,7 +32,7 @@ if(rpcz_build_tests)
 endif(rpcz_build_tests)
 
 
-add_subdirectory(examples/cpp)
+# add_subdirectory(examples/cpp)
 add_subdirectory(graspit_rcpz/cpp)
 
 file(GLOB RPCZ_PUBLIC_HEADERS include/rpcz/*.h)
