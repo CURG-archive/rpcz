@@ -53,7 +53,7 @@ message GetOptionSelectionRequest
 message GetOptionSelectionResponse 
 {
    // The option selected;
-   required int selectedOption = 1;
+   required int32 selectedOption = 1;
 
    // The confidence of the classifier of the selection. 
    required float confidence = 2;
@@ -62,6 +62,6 @@ message GetOptionSelectionResponse
    repeated float interestLevel = 3;
 }
 
-service ObjectRecognitionService {
-  rpc run(ObjectRecognitionRequest) returns(ObjectRecognitionResponse);
+service GetOptionSelectionService {
+  rpc run(GetOptionSelectionRequest) returns(GetOptionSelectionResponse);
 }
