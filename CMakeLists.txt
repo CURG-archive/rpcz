@@ -1,5 +1,5 @@
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
-
+project(rpcz)
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules")
 if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release")
 endif()

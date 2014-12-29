@@ -1,4 +1,4 @@
-set(RPCZ_PLUGIN_ROOT ${CMAKE_CURRENT_LIST_DIR}/../build/src/rpcz/plugin)
+set(RPCZ_PLUGIN_ROOT ${PROJECT_BINARY_DIR}/src/rpcz/plugin)
 
 function(PROTOBUF_GENERATE_RPCZ SRCS HDRS)
   set(PLUGIN_BIN ${RPCZ_PLUGIN_ROOT}/cpp/protoc-gen-cpp_rpcz)

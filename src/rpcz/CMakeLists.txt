@@ -4,11 +4,12 @@ project (RPCZ)
 set (RPCZ_VERSION_MAJOR 0)
 set (RPCZ_VERSION_MINOR 9)
 
+message("In RPCZ Package")
 add_subdirectory(plugin)
 
 protobuf_generate_cpp(RPCZ_PB_SRCS RPCZ_PB_HDRS proto/rpcz.proto)
 set(PROTO_SOURCES ${RPCZ_PB_SRCS} ${RPCZ_PB_HDRS})
-
+message("RPCZ sources ${RPCZ_PB_SRCS}")
 include_directories(${PROJECT_BINARY_DIR})
 set(RPCZ_SOURCES
     application.cc clock.cc connection_manager.cc
