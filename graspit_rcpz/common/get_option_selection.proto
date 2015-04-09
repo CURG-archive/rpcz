@@ -54,6 +54,9 @@ message GetOptionSelectionRequest
     // request that the responder be more careful 	   
     // in presenting the option. 
     required float minimumConfidenceLevel = 4 [default = 0];     	     	   			      							 
+
+    // A matrix describing the similarity between different options.
+    repeated float similarityMatrix = 5;
 }
 
 message GetOptionSelectionResponse 
